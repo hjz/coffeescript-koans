@@ -39,7 +39,7 @@ describe 'About Functions', ->
     expect(returnFirstArg('first', 'second', 'third')).toBe('first')
 
     returnSecondArg = (firstArg, secondArg) -> secondArg
-    expect(returnSecondArg('only give first arg')).toBe(nil)
+    expect(returnSecondArg('only give first arg')).toBe(undefined)
 
     # Coffeescript supports splats
     returnAllArgs = (allargs...) -> allargs
@@ -54,21 +54,21 @@ describe 'About Functions', ->
     appendDoubleRules = (name) -> name + ' totally rules!'
 
     praiseSinger = givePraise: appendRules
-    expect(praiseSinger.givePraise 'John' ).toBe(FILL_ME_IN)
+    expect(praiseSinger.givePraise 'John' ).toBe('John rules!')
 
     praiseSinger.givePraise = appendDoubleRules
-    expect(praiseSinger.givePraise 'Mary' ).toBe(FILL_ME_IN)
+    expect(praiseSinger.givePraise 'Mary' ).toBe('Mary totally rules!')
 
 
   it 'should understand destructuring assignment', ->
     weatherReport = (location) -> [location, 22, 'Mostly sunny']
     [city, temperature, forecast] = weatherReport 'London'
-    expect(city).toBe(FILL_ME_IN)
-    expect(temperature).toBe(FILL_ME_IN)
+    expect(city).toBe('London')
+    expect(temperature).toBe(22)
 
 
   it 'should understand destructuring works with splats', ->
     phrase = 'Now is the time for all good men to come to the aid of the Party'
     [start, middle..., end] = phrase.split ' '
-    expect(start).toBe(FILL_ME_IN)
-    expect(end).toBe(FILL_ME_IN)
+    expect(start).toBe('Now')
+    expect(end).toBe('Party')
